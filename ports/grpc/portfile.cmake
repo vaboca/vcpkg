@@ -21,10 +21,8 @@ vcpkg_from_github(
         00012-fix-use-cxx17.patch
 )
 
-if(TARGET_TRIPLET STREQUAL HOST_TRIPLET)
-    set(gRPC_BUILD_CODEGEN ON)
-else()
-    set(gRPC_BUILD_CODEGEN OFF)
+set(gRPC_BUILD_CODEGEN ON)
+if(NOT TARGET_TRIPLET STREQUAL HOST_TRIPLET)
     vcpkg_add_to_path(PREPEND "${CURRENT_HOST_INSTALLED_DIR}/tools/grpc")
 endif()
 
